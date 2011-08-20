@@ -1,0 +1,105 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="text" name="original" />
+<input type="text" name="attempt" />
+<p id="close-enough"></p>
+<script type="text/javascript">
+
+function KeyboardCharacters(){
+	this.boardStrings = undefined;
+	this.boardArrays = undefined;
+	this.buildBoards();
+}
+
+KeyboardCharacters.prototype.buildBoards = function (){
+	this.boardStrings = new Array(new Array(), new Array(), new Array());
+	this.boardsArrays = new Array(new Array(), new Array(), new Array());
+	
+	this.boardStrings[0] = "qwertyuiop";
+	this.boardStrings[1] = "asdfghjkl";
+	this.boardStrings[2] = "zxcvbnm";
+	
+	this.boardsArrays[0] = this.boardStrings[0].split("");
+	this.boardsArrays[1] = this.boardStrings[1].split("");
+	this.boardsArrays[2] = this.boardStrings[2].split("");
+};
+
+KeyboardCharacters.prototype.isAround = function(source,target){
+	var sourceCords = this.getIndexOf(source);
+	
+	var check = undefined;
+	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1]]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1]]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0]][sourceCords[1] + 1]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0]][sourceCords[1] - 1]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] + 1]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] - 1]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] - 1]; } catch (err) { }
+	if( check == target) { return true; }
+	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] + 1]; } catch (err) { }
+	if( check == target) { return true; }
+	
+	return false;
+};
+
+KeyboardCharacters.prototype.getIndexOf = function(value){
+	var returnResult = new Array();
+	for(row=0; row<this.boardStrings.length; row++){
+		var indexOfHere = this.boardStrings[row].indexOf(value);
+		if( indexOfHere != -1){
+			returnResult[0] = row;
+			returnResult[1] = indexOfHere;
+			break;
+		}
+	}
+	
+	return returnResult;
+};
+
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+	var attempt = $('input[name="attempt"]');
+	var original = $('input[name="original"]');
+	var status = $("p#close-enough");
+	var board = new KeyboardCharacters();
+	
+	attempt.keyup(function(){
+		if($(this).val().length == original.val().length){
+			status.text("");
+			
+			var originalArray = original.val().split("");
+			var attemptArray = $(this).val().split("");
+			var closeEnough = true;
+			var cnt = 0;
+			while(closeEnough && cnt < originalArray.length){
+				if(originalArray[cnt] != attemptArray[cnt] && !board.isAround(originalArray[cnt],attemptArray[cnt])) {
+					closeEnough = false;
+					break;
+				}
+				cnt++;
+			}
+			
+			if(closeEnough){
+				status.text("attempt and original are close enough");	
+			} else {
+				status.text("attempt and original are NOT close enough");	
+			}
+			
+		} else {
+			status.text("attempt and original lengths do not match");	
+		}
+	});
+});
+</script>
+</body>
+</html>
