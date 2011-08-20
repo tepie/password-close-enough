@@ -65,24 +65,67 @@ KeyboardCharacters.prototype.getIndexOf = function(value){
 	return returnResult;
 };
 
+function KeyboardDigits(){
+	KeyboardCharacters.call(this);
+}
+
+KeyboardDigits.prototype.buildBoards = function (){
+	this.boardStrings = new Array(new Array());
+	this.boardsArrays = new Array(new Array());
+	
+	this.boardStrings[0] = '1234567890';
+	this.boardsArrays[0] = this.boardStrings[0].split("");
+};
+
+function PasswordCloseEnough(original,attempt){
+	this.original = original;
+	this.attempt = attempt;
+	this.characterBoard = new KeyboardCharacters();
+	this.wordPattern = /\w/;
+	this.status = undefined;
+}
+
+PasswordCloseEnough.prototype.setup = function(){
+	this.status = $('<div id="password-close-enough-status" />');
+	this.status.appendTo($('body'));
+	this.attempt.keyup( {callingReference: this}, this.eventCallback);
+};
+
+PasswordCloseEnough.prototype.eventCallback = function(e){
+	if( e.data.callingReference.attempt.val().length == e.data.callingReference.original.val().length ){
+	
+	} else {
+		var prependMe = $('<p class="close-enough">original and attempt lengths do not match</p>');
+		prependMe.prependTo(e.data.callingReference.status);
+	}
+};
+
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
 	var attempt = $('input[name="attempt"]');
 	var original = $('input[name="original"]');
-	var status = $("p#close-enough");
-	var board = new KeyboardCharacters();
+	
+	var passwordCloseEnough = new PasswordCloseEnough(original,attempt);
+	passwordCloseEnough.setup();
+	
+	/*var status = $("p#close-enough");
+	var characterBoard = new KeyboardCharacters();
+	var wordPattern = /\w/;
 	
 	attempt.keyup(function(){
 		if($(this).val().length == original.val().length){
 			status.text("");
 			
-			var originalArray = original.val().split("");
-			var attemptArray = $(this).val().split("");
+			var originalArray = original.val().toLowerCase().split("");
+			var attemptArray = $(this).val().toLowerCase().split("");
 			var closeEnough = true;
 			var cnt = 0;
 			while(closeEnough && cnt < originalArray.length){
-				if(originalArray[cnt] != attemptArray[cnt] && !board.isAround(originalArray[cnt],attemptArray[cnt])) {
+				if(originalArray[cnt] != attemptArray[cnt] 
+					&& wordPattern.test(originalArray[cnt]) 
+					&& wordPattern.test(attemptArray[cnt])
+					&& !characterBoard.isAround(originalArray[cnt],attemptArray[cnt])) {
 					closeEnough = false;
 					break;
 				}
@@ -99,6 +142,7 @@ $(document).ready(function () {
 			status.text("attempt and original lengths do not match");	
 		}
 	});
+	*/
 });
 </script>
 </body>
