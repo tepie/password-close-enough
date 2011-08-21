@@ -1,10 +1,11 @@
 <html>
 <head>
+<title>password-close-enough</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 <body>
-user name: <input type="text" name="username" /><br />
-password: <input type="text" name="password" /><br />
+user name: <input type="text" name="username" value="tepietrondi" /><br />
+password: <input type="text" name="password" value="passw0rd" /><br />
 <button  type="button" id="go">Close enough?</button>
 <p id="close-enough"></p>
 <script type="text/javascript">
@@ -72,6 +73,10 @@ function KeyboardDigits(){
 	KeyboardCharacters.call(this);
 }
 
+KeyboardDigits.prototype = new KeyboardCharacters();
+KeyboardDigits.prototype.constructor = KeyboardDigits;
+KeyboardDigits.prototype.__proto__.buildBoards = KeyboardDigits.prototype.buildBoards;
+
 KeyboardDigits.prototype.buildBoards = function (){
 	this.boardStrings = new Array(new Array());
 	this.boardsArrays = new Array(new Array());
@@ -80,8 +85,6 @@ KeyboardDigits.prototype.buildBoards = function (){
 	this.boardsArrays[0] = this.boardStrings[0].split("");
 };
 
-KeyboardDigits.prototype = new KeyboardCharacters();
-KeyboardDigits.prototype.constructor = KeyboardCharacters;
 
 function PasswordCloseEnough(username,password,submit){
 	this.username = username;
@@ -90,8 +93,8 @@ function PasswordCloseEnough(username,password,submit){
 	
 	this.characterBoard = new KeyboardCharacters();
 	this.digitBoard = new KeyboardDigits();
-	this.wordPattern = /\w/;
-	this.digitPattern = /\d/;
+	this.wordPattern = /[a-z]/;
+	this.digitPattern = /[0-9]/;
 	this.status = undefined;
 }
 
