@@ -5,24 +5,31 @@
 <script type="text/javascript" src="/password-close-enough.js"></script>
 </head>
 <body>
-<div style="border:1px;">
-<b>mock login</b><br />
-user name: <input type="text" name="username" value="tepietrondi" /><br />
-password: <input type="text" name="password" value="passw0rd" /><br />
-<br />
-<b>step 1: store some passwords</b></br />
-<p>add some user names and passwords to test with. They are fake and client side.</p>
-<button  type="button" id="store">Store username and password</button>
-<br /><br />
-<b>step 2: try some similar passwords to see if close enough</b></br />
-<p>Now that you added some passwords, try some others to see if they are close enough.</p>
-<button  type="button" id="go">Close enough?</button>
-<br /><br />
+<div style="border:1px;border-style:solid;width:20%;padding:0.8em;">
+	<b>mock login</b><br />
+	user name:&nbsp;<input type="text" name="username" value="tepietrondi" /><br />
+	password:&nbsp;&nbsp;<input type="text" name="password" value="passw0rd" /><br />
 </div>
-<div id="password-close-enough-status-title">
-<b>password close enough status messages</b>
-</div>	<br />
-<div id="password-close-enough-status" />
+
+<div style="padding:0.8em;">
+	<b>step 1: store some passwords</b></br />
+	<p>add some user names and passwords to test with. They are fake and client side.</p>
+	<button  type="button" id="store">Store username and password</button>
+</div>
+
+<div style="padding:0.8em;">
+	<b>step 2: try some similar passwords to see if close enough</b></br />
+	<p>Now that you added some passwords, try some others to see if they are close enough.</p>
+	<button  type="button" id="go">Close enough?</button>
+</div>
+
+<div style="padding:0.8em;">
+	<div id="password-close-enough-status-title">
+	<b>password close enough status messages</b>
+	</div>	<br />
+	<div id="password-close-enough-status" />
+</div>
+
 <script type="text/javascript">
 var fakePasswordStorageClearText = {"tepietrondi" : "passw0rd" };
 $(document).ready(function () {
