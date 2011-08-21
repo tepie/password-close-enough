@@ -3,10 +3,13 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 <body>
-<input type="text" name="original" />
-<input type="text" name="attempt" />
+user name: <input type="text" name="username" /><br />
+password: <input type="text" name="password" /><br />
+<button  type="button" id="go">Close enough?</button>
 <p id="close-enough"></p>
 <script type="text/javascript">
+
+var fakePasswordStorageClearText = {"tepietrondi" : "passw0rd" };
 
 function KeyboardCharacters(){
 	this.boardStrings = undefined;
@@ -77,36 +80,81 @@ KeyboardDigits.prototype.buildBoards = function (){
 	this.boardsArrays[0] = this.boardStrings[0].split("");
 };
 
-function PasswordCloseEnough(original,attempt){
-	this.original = original;
-	this.attempt = attempt;
+KeyboardDigits.prototype = new KeyboardCharacters();
+KeyboardDigits.prototype.constructor = KeyboardCharacters;
+
+function PasswordCloseEnough(username,password,submit){
+	this.username = username;
+	this.password = password;
+	this.submit = submit;
+	
 	this.characterBoard = new KeyboardCharacters();
+	this.digitBoard = new KeyboardDigits();
 	this.wordPattern = /\w/;
+	this.digitPattern = /\d/;
 	this.status = undefined;
 }
 
 PasswordCloseEnough.prototype.setup = function(){
 	this.status = $('<div id="password-close-enough-status" />');
 	this.status.appendTo($('body'));
-	this.attempt.keyup( {callingReference: this}, this.eventCallback);
+	this.submit.click( {callingReference: this}, this.eventCallback);
 };
 
 PasswordCloseEnough.prototype.eventCallback = function(e){
-	if( e.data.callingReference.attempt.val().length == e.data.callingReference.original.val().length ){
 	
+	var lCalRef = e.data.callingReference;
+	var usersActualPassword = fakePasswordStorageClearText[lCalRef.username.val()];
+	if(usersActualPassword == undefined){
+		lCalRef.status.html('<p class="close-enough">username not found in database</p>');
 	} else {
-		var prependMe = $('<p class="close-enough">original and attempt lengths do not match</p>');
-		prependMe.prependTo(e.data.callingReference.status);
+		if(lCalRef.password.val().length == usersActualPassword.length ){
+			var originalArray = usersActualPassword.toLowerCase().split("");
+			var attemptArray = lCalRef.password.val().toLowerCase().split("");
+			
+			var closeEnough = true;
+			var cnt = 0;
+			
+			while(closeEnough && cnt < originalArray.length){
+				if(originalArray[cnt] != attemptArray[cnt] ){ 
+					if( lCalRef.wordPattern.test(originalArray[cnt])  && lCalRef.wordPattern.test(attemptArray[cnt])) {
+						if(	!lCalRef.characterBoard.isAround(originalArray[cnt],attemptArray[cnt])) {
+							closeEnough = false;
+							break;
+						} 
+					} else if( lCalRef.digitPattern.test(originalArray[cnt])  && lCalRef.digitPattern.test(attemptArray[cnt])) {
+						if(	!lCalRef.digitBoard.isAround(originalArray[cnt],attemptArray[cnt])) {
+							closeEnough = false;
+							break;
+						} 
+					} else {
+						closeEnough = false;
+						break;
+					}
+				} // else characters match
+				cnt++;
+			}
+				
+			if(closeEnough){
+				lCalRef.status.html('<p class="close-enough">attempt and original are close enough</p>');	
+			} else {
+				lCalRef.status.html('<p class="close-enough">attempt and original are NOT close enough</p>');	
+			}
+			
+		} else {
+			lCalRef.status.html('<p class="close-enough">original and attempt lengths do not match</p>');
+		}
 	}
 };
 
 </script>
 <script type="text/javascript">
 $(document).ready(function () {
-	var attempt = $('input[name="attempt"]');
-	var original = $('input[name="original"]');
+	var username = $('input[name="username"]');
+	var password = $('input[name="password"]');
+	var buttonGo = $('button#go');
 	
-	var passwordCloseEnough = new PasswordCloseEnough(original,attempt);
+	var passwordCloseEnough = new PasswordCloseEnough(username,password,buttonGo);
 	passwordCloseEnough.setup();
 	
 	/*var status = $("p#close-enough");
