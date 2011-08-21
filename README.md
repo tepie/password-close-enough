@@ -23,4 +23,12 @@ If you had an "Q" then valid mistypes would be: W,S,A.
 
 Pretty simple. 
 
+Requirements
+-------
+* jQuery - becuase of easy of dom selection and events
+* Hatred for security 
+
+Running
+-------
+Just pull down the code and run the demo by executing an HTTP server. I use: python -m SimpleHTTPServer
 
