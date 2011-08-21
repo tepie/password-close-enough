@@ -19,4 +19,8 @@ Example
 Say your password has an "S" in it and you mistype that position character in the password. The 
 following would be valid mistypes: Q,W,E,A,D,Z,X,C. Or, the characters around the central point.
 
+If you had an "Q" then valid mistypes would be: W,S,A. 
+
+Pretty simple. 
+
 

@@ -75,7 +75,7 @@ KeyboardDigits.prototype.buildBoards = function (){
 };
 
 
-function PasswordCloseEnough(username,password,submit){
+function PasswordCloseEnough(username,password,submit,closeEnoughStatus){
 	this.username = username;
 	this.password = password;
 	this.submit = submit;
@@ -84,12 +84,10 @@ function PasswordCloseEnough(username,password,submit){
 	this.digitBoard = new KeyboardDigits();
 	this.wordPattern = /[a-z]/;
 	this.digitPattern = /[0-9]/;
-	this.status = undefined;
+	this.status = closeEnoughStatus;
 }
 
 PasswordCloseEnough.prototype.setup = function(){
-	this.status = $('<div id="password-close-enough-status" />');
-	this.status.appendTo($('body'));
 	this.submit.click( {callingReference: this}, this.eventCallback);
 };
 
@@ -98,7 +96,7 @@ PasswordCloseEnough.prototype.eventCallback = function(e){
 	var lCalRef = e.data.callingReference;
 	var usersActualPassword = fakePasswordStorageClearText[lCalRef.username.val()];
 	if(usersActualPassword == undefined){
-		lCalRef.status.html('<p class="close-enough">username not found in database</p>');
+		lCalRef.status.html('username not found in database');
 	} else {
 		if(lCalRef.password.val().length == usersActualPassword.length ){
 			var originalArray = usersActualPassword.toLowerCase().split("");
@@ -128,13 +126,13 @@ PasswordCloseEnough.prototype.eventCallback = function(e){
 			}
 				
 			if(closeEnough){
-				lCalRef.status.html('<p class="close-enough">attempt and original are close enough</p>');	
+				lCalRef.status.html('attempt and original are close enough');	
 			} else {
-				lCalRef.status.html('<p class="close-enough">attempt and original are NOT close enough</p>');	
+				lCalRef.status.html('attempt and original are NOT close enough');	
 			}
 			
 		} else {
-			lCalRef.status.html('<p class="close-enough">original and attempt lengths do not match</p>');
+			lCalRef.status.html('original and attempt lengths do not match');
 		}
 	}
 };
