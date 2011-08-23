@@ -96,7 +96,7 @@ PasswordCloseEnough.prototype.eventCallback = function(e){
 	var lCalRef = e.data.callingReference;
 	var usersActualPassword = fakePasswordStorageClearText[lCalRef.username.val()];
 	if(usersActualPassword == undefined){
-		lCalRef.status.html('username not found in database');
+		lCalRef.status.innerHTML = 'username not found in database';
 	} else {
 		if(lCalRef.password.val().length == usersActualPassword.length ){
 			var originalArray = usersActualPassword.toLowerCase().split("");
@@ -126,13 +126,13 @@ PasswordCloseEnough.prototype.eventCallback = function(e){
 			}
 				
 			if(closeEnough){
-				lCalRef.status.html('attempt and original are close enough');	
+				lCalRef.status.innerHTML = 'attempt and original are close enough';	
 			} else {
-				lCalRef.status.html('attempt and original are NOT close enough');	
+				lCalRef.status.innerHTML = 'attempt and original are NOT close enough';	
 			}
 			
 		} else {
-			lCalRef.status.html('original and attempt lengths do not match');
+			lCalRef.status.innerHTML = 'original and attempt lengths do not match';
 		}
 	}
 };
