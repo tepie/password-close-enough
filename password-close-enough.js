@@ -2,65 +2,46 @@
 // author: terrence pietrondi
 
 function KeyboardCharacters(){
-	this.boardStrings = undefined;
-	this.boardArrays = undefined;
+	this.boardsArrays = undefined;
 	this.lookupCache = undefined;
 	this.buildBoards();
 	this.buildWhatsAroundCache();
 }
 
 KeyboardCharacters.prototype.buildBoards = function (){
-	this.boardStrings = new Array(new Array(), new Array(), new Array());
 	this.boardsArrays = new Array(new Array(), new Array(), new Array());
 	
-	this.boardStrings[0] = "qwertyuiop";
-	this.boardStrings[1] = "asdfghjkl";
-	this.boardStrings[2] = "zxcvbnm";
-	
-	this.boardsArrays[0] = this.boardStrings[0].split("");
-	this.boardsArrays[1] = this.boardStrings[1].split("");
-	this.boardsArrays[2] = this.boardStrings[2].split("");
+	this.boardsArrays[0] = ["q","w","e","r","t","y","u","i","o","p"];
+	this.boardsArrays[1] = ["a","s","d","f","g","h","j","k","l"];
+	this.boardsArrays[2] = ["z","x","c","v","b","n","m"];
 };
 
 KeyboardCharacters.prototype.buildWhatsAroundCache = function (){
 	var row = 0; var col = 0;
 	this.lookupCache = {};
 	for(row=0; row<this.boardsArrays.length; row++){
-		console.log("buildWhatsAroundCache - next row is %s",row);
 		for(col=0; col<this.boardsArrays[row].length; col++){
-			console.log("buildWhatsAroundCache - next col is %s",col);
 			var next = this.boardsArrays[row][col];
-			console.log("buildWhatsAroundCache - next value %s at %s x %s",next,row,col);
 			var whatsAround = this.getWhatsAround(next);
-			console.log("buildWhatsAroundCache - whats around %s is %o",next,whatsAround);
 			this.lookupCache[next] = whatsAround;
 		}
 	}
-	console.log("buildWhatsAroundCache - look up cache %o",this.lookupCache);
+	
+	this.boardArrays = undefined;
 }
 
 KeyboardCharacters.prototype.isAround = function(source,target){
-	var sourceCords = this.getIndexOf(source);
-	
-	var check = undefined;
-	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1]]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1]]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0]][sourceCords[1] + 1]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0]][sourceCords[1] - 1]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] + 1]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] - 1]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] - 1]; } catch (err) { }
-	if( check == target) { return true; }
-	try {	check 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] + 1]; } catch (err) { }
-	if( check == target) { return true; }
-	
-	return false;
+	var whatsAroundSource = this.lookupCache[source];
+	if(whatsAroundSource != undefined){
+		var targetIndex = binarySearch(whatsAroundSource,target);
+		if( targetIndex != -1){
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
 };
 
 KeyboardCharacters.prototype.getWhatsAround = function(source){
@@ -89,51 +70,10 @@ KeyboardCharacters.prototype.getWhatsAround = function(source){
 	return whatsAround;
 };
 
-//Copyright 2009 Nicholas C. Zakas. All rights reserved.
-//MIT-Licensed, see source file
-//http://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/
-//https://github.com/nzakas/computer-science-in-javascript
-KeyboardCharacters.prototype.binarySearch = function(items, value){
-
-    var startIndex  = 0,
-        stopIndex   = items.length - 1,
-        middle      = Math.floor((stopIndex + startIndex)/2);
-
-    while(items[middle] != value && startIndex < stopIndex){
-
-        //adjust search area
-        if (value < items[middle]){
-            stopIndex = middle - 1;
-        } else if (value > items[middle]){
-            startIndex = middle + 1;
-        }
-
-        //recalculate middle
-        middle = Math.floor((stopIndex + startIndex)/2);
-    }
-
-    //make sure it's the right value
-    return (items[middle] != value) ? -1 : middle;
-}
-
-KeyboardCharacters.prototype.rowSearch = function(value){
-	var returnResult = new Array();
-	for(row=0; row<this.boardStrings.length; row++){
-		var indexOfHere = this.binarySearch(this.boardStrings[row],value);
-		if( indexOfHere != -1){
-			returnResult[0] = row;
-			returnResult[1] = indexOfHere;
-			break;
-		}
-	}
-	
-	return returnResult;
-};
-
 KeyboardCharacters.prototype.getIndexOf = function(value){
 	var returnResult = new Array();
-	for(row=0; row<this.boardStrings.length; row++){
-		var indexOfHere = this.boardStrings[row].indexOf(value);
+	for(row=0; row<this.boardsArrays.length; row++){
+		var indexOfHere = $.inArray(value,this.boardsArrays[row]);
 		if( indexOfHere != -1){
 			returnResult[0] = row;
 			returnResult[1] = indexOfHere;
@@ -153,11 +93,8 @@ KeyboardDigits.prototype.constructor = KeyboardDigits;
 KeyboardDigits.prototype.__proto__.buildBoards = KeyboardDigits.prototype.buildBoards;
 
 KeyboardDigits.prototype.buildBoards = function (){
-	this.boardStrings = new Array(new Array());
 	this.boardsArrays = new Array(new Array());
-	
-	this.boardStrings[0] = '1234567890';
-	this.boardsArrays[0] = this.boardStrings[0].split("");
+	this.boardsArrays[0] = ["1","2","3","4","5","6","7","8","9","0"];
 };
 
 
@@ -204,8 +141,7 @@ PasswordCloseEnough.prototype.eventCallback = function(e){
 							break;
 						} 
 					} else {
-						closeEnough = false;
-						break;
+						// pass, we don't have anything to pass for thes characters
 					}
 				} // else characters match
 				cnt++;
