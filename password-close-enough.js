@@ -4,7 +4,9 @@
 function KeyboardCharacters(){
 	this.boardStrings = undefined;
 	this.boardArrays = undefined;
+	this.lookupCache = undefined;
 	this.buildBoards();
+	this.buildWhatsAroundCache();
 }
 
 KeyboardCharacters.prototype.buildBoards = function (){
@@ -19,6 +21,23 @@ KeyboardCharacters.prototype.buildBoards = function (){
 	this.boardsArrays[1] = this.boardStrings[1].split("");
 	this.boardsArrays[2] = this.boardStrings[2].split("");
 };
+
+KeyboardCharacters.prototype.buildWhatsAroundCache = function (){
+	var row = 0; var col = 0;
+	this.lookupCache = {};
+	for(row=0; row<this.boardsArrays.length; row++){
+		console.log("buildWhatsAroundCache - next row is %s",row);
+		for(col=0; col<this.boardsArrays[row].length; col++){
+			console.log("buildWhatsAroundCache - next col is %s",col);
+			var next = this.boardsArrays[row][col];
+			console.log("buildWhatsAroundCache - next value %s at %s x %s",next,row,col);
+			var whatsAround = this.getWhatsAround(next);
+			console.log("buildWhatsAroundCache - whats around %s is %o",next,whatsAround);
+			this.lookupCache[next] = whatsAround;
+		}
+	}
+	console.log("buildWhatsAroundCache - look up cache %o",this.lookupCache);
+}
 
 KeyboardCharacters.prototype.isAround = function(source,target){
 	var sourceCords = this.getIndexOf(source);
@@ -42,6 +61,73 @@ KeyboardCharacters.prototype.isAround = function(source,target){
 	if( check == target) { return true; }
 	
 	return false;
+};
+
+KeyboardCharacters.prototype.getWhatsAround = function(source){
+	var sourceCords = this.getIndexOf(source);
+	
+	var whatsAround = new Array();
+	var nextAround = undefined;
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1]]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1]]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0]][sourceCords[1] + 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0]][sourceCords[1] - 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] + 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] - 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] - 1][sourceCords[1] - 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	try {	nextAround 	= this.boardsArrays[sourceCords[0] + 1][sourceCords[1] + 1]; } catch (err) { nextAround = undefined; }
+	if( nextAround != undefined) { whatsAround.push(nextAround); }
+	
+	whatsAround.sort();
+	return whatsAround;
+};
+
+//Copyright 2009 Nicholas C. Zakas. All rights reserved.
+//MIT-Licensed, see source file
+//http://www.nczonline.net/blog/2009/09/01/computer-science-in-javascript-binary-search/
+//https://github.com/nzakas/computer-science-in-javascript
+KeyboardCharacters.prototype.binarySearch = function(items, value){
+
+    var startIndex  = 0,
+        stopIndex   = items.length - 1,
+        middle      = Math.floor((stopIndex + startIndex)/2);
+
+    while(items[middle] != value && startIndex < stopIndex){
+
+        //adjust search area
+        if (value < items[middle]){
+            stopIndex = middle - 1;
+        } else if (value > items[middle]){
+            startIndex = middle + 1;
+        }
+
+        //recalculate middle
+        middle = Math.floor((stopIndex + startIndex)/2);
+    }
+
+    //make sure it's the right value
+    return (items[middle] != value) ? -1 : middle;
+}
+
+KeyboardCharacters.prototype.rowSearch = function(value){
+	var returnResult = new Array();
+	for(row=0; row<this.boardStrings.length; row++){
+		var indexOfHere = this.binarySearch(this.boardStrings[row],value);
+		if( indexOfHere != -1){
+			returnResult[0] = row;
+			returnResult[1] = indexOfHere;
+			break;
+		}
+	}
+	
+	return returnResult;
 };
 
 KeyboardCharacters.prototype.getIndexOf = function(value){
