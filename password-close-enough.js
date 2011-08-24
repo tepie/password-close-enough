@@ -115,7 +115,6 @@ PasswordCloseEnough.prototype.setup = function(){
 };
 
 PasswordCloseEnough.prototype.eventCallback = function(e){
-	
 	var lCalRef = e.data.callingReference;
 	var usersActualPassword = fakePasswordStorageClearText[lCalRef.username.val()];
 	if(usersActualPassword == undefined){
