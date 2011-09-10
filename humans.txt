@@ -1,0 +1,15 @@
+/* TEAM */
+	Author:terrence pietrondi
+	Contact: terrence.a.pietrongi [at] gmail.com
+	Twitter: @tepietrondi
+	From:Cleveland, Ohio, USA
+	Site: itworksonmylocal.com
+
+/* THANKS */
+    Name:Mom
+
+/* SITE */
+	Language:English
+	Doctype:HTML5
+    Components:jQuery
+	IDE:TextWrangler
