@@ -11,5 +11,5 @@
 /* SITE */
 	Language:English
 	Doctype:HTML5
-    Components:jQuery
+	Components:jQuery
 	IDE:TextWrangler
