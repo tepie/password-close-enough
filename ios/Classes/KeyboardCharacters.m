@@ -15,7 +15,7 @@
 -(id) init {
 	if (self = [super init]){
 		//[self setBoardArrays : [[[NSMutableArray] alloc] init] ];
-		boardArrays = [[NSMutableArray] alloc] init];
+		boardArrays = [NSMutableArray arrayWithCapacity:3];
 	}
 	
 	return self;
