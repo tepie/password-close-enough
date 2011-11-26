@@ -19,5 +19,6 @@
 -(id) init;
 -(void) buildBoards;
 -(void) buildWhatsAroundCache;
+-(NSMutableArray *) whatsAround : (NSString*) source; 
 
 @end

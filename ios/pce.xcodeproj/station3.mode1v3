@@ -327,15 +327,15 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CEBDBB2714813FC600DB4BEB</string>
+										<string>CEBDBB74148145CB00DB4BEB</string>
 										<key>history</key>
 										<array>
 											<string>CE170F10147FF76000CA77F8</string>
 											<string>CE170F11147FF76000CA77F8</string>
 											<string>CE170F13147FF76000CA77F8</string>
 											<string>CEBDBB2414813FC600DB4BEB</string>
-											<string>CEBDBB2514813FC600DB4BEB</string>
-											<string>CEBDBB2614813FC600DB4BEB</string>
+											<string>CEBDBB6C1481452100DB4BEB</string>
+											<string>CEBDBB6D1481452100DB4BEB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -559,7 +559,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>KeyboardCharacters.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -576,6 +576,8 @@
 							<string>204pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -628,7 +630,7 @@
 			<key>WindowToolGUID</key>
 			<string>CE3518D2147FEB09002C4B04</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

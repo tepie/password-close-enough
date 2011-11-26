@@ -65,8 +65,23 @@
 }
 
 -(void) buildWhatsAroundCache{
+	lookupCache = [[NSMutableDictionary alloc] init];
 	
+	for (NSMutableArray *nextRow in boardArrays) {
+		for (NSString *nextCol in nextRow) {
+			
+		}
+	}
 }
+
+-(NSMutableArray*) whatsAround:(NSString*) source{
+	NSMutableArray *around = [NSMutableArray arrayWithCapacity:9];
+	
+	NSString *nextAround;
+	
+	return around;
+}
+
 
 - (void)dealloc {
 	[boardArrays release];
