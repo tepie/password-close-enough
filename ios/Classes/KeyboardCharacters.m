@@ -11,10 +11,12 @@
 
 @implementation KeyboardCharacters
 @synthesize boardArrays;
+@synthesize lookupCache;
 
 -(id) init {
 	if (self = [super init]){
 		[self buildBoards];
+		[self buildWhatsAroundCache];
 	}
 	
 	return self;
@@ -60,6 +62,9 @@
 	[row1 addObject:  @"m"];
 	
 	[boardArrays insertObject: row3 atIndex:3];
+}
+
+-(void) buildWhatsAroundCache{
 	
 }
 

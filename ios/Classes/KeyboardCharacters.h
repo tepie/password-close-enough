@@ -11,11 +11,13 @@
 
 @interface KeyboardCharacters : NSObject {
 	NSMutableArray *boardArrays;
-	//NSMutableDictionary *lookupCache;
+	NSMutableDictionary *lookupCache;
 }
 
 @property(nonatomic,retain) NSMutableArray *boardArrays;
+@property(nonatomic,retain) NSMutableDictionary *lookupCache;
 -(id) init;
 -(void) buildBoards;
+-(void) buildWhatsAroundCache;
 
 @end
