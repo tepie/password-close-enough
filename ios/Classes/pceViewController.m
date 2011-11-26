@@ -7,6 +7,7 @@
 //
 
 #import "pceViewController.h"
+#import "KeyboardCharacters.h"
 
 @implementation pceViewController
 @synthesize userTextField;
@@ -79,6 +80,7 @@
 }
 
 - (IBAction) checkMockLoginCloseEnough{
+	KeyboardCharacters *characters = [[KeyboardCharacters alloc] init];
 }
 	
 
