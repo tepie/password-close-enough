@@ -16,5 +16,6 @@
 
 @property(nonatomic,retain) NSMutableArray *boardArrays;
 -(id) init;
+-(void) buildBoards;
 
 @end

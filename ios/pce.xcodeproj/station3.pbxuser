@@ -140,6 +140,10 @@
 			CEBDBB0914813CB500DB4BEB /* PBXTextBookmark */ = CEBDBB0914813CB500DB4BEB /* PBXTextBookmark */;
 			CEBDBB0C14813D3800DB4BEB /* PBXTextBookmark */ = CEBDBB0C14813D3800DB4BEB /* PBXTextBookmark */;
 			CEBDBB1314813DE500DB4BEB /* PBXTextBookmark */ = CEBDBB1314813DE500DB4BEB /* PBXTextBookmark */;
+			CEBDBB1814813E4100DB4BEB /* PBXTextBookmark */ = CEBDBB1814813E4100DB4BEB /* PBXTextBookmark */;
+			CEBDBB1914813E4100DB4BEB /* PBXTextBookmark */ = CEBDBB1914813E4100DB4BEB /* PBXTextBookmark */;
+			CEBDBB1A14813E4100DB4BEB /* PBXTextBookmark */ = CEBDBB1A14813E4100DB4BEB /* PBXTextBookmark */;
+			CEBDBB1D14813E8E00DB4BEB /* PBXTextBookmark */ = CEBDBB1D14813E8E00DB4BEB /* PBXTextBookmark */;
 		};
 		sourceControlManager = CE3518B4147F4ED7002C4B04 /* Source Control */;
 		userBuildSettings = {
@@ -157,16 +161,16 @@
 	};
 	CE170EC5147FEEB600CA77F8 /* KeyboardCharacters.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {775, 380}}";
-			sepNavSelRange = "{357, 0}";
-			sepNavVisRange = "{0, 365}";
+			sepNavIntBoundsRect = "{{0, 0}, {1075, 572}}";
+			sepNavSelRange = "{379, 0}";
+			sepNavVisRange = "{0, 386}";
 		};
 	};
 	CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1075, 884}}";
-			sepNavSelRange = "{1368, 0}";
-			sepNavVisRange = "{332, 1077}";
+			sepNavIntBoundsRect = "{{0, 0}, {1075, 936}}";
+			sepNavSelRange = "{296, 0}";
+			sepNavVisRange = "{39, 1025}";
 			sepNavWindowFrame = "{{15, 469}, {1300, 404}}";
 		};
 	};
@@ -175,7 +179,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 17";
 		rLen = 0;
-		rLoc = 275;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 221;
 		vrLoc = 137;
@@ -185,7 +189,7 @@
 		comments = "Previous declaration of '-(id)initWithNothing'";
 		fRef = CE170EC5147FEEB600CA77F8 /* KeyboardCharacters.h */;
 		rLen = 1;
-		rLoc = 17;
+		rLoc = 18;
 		rType = 1;
 	};
 	CE170F05147FF73D00CA77F8 /* PBXTextBookmark */ = {
@@ -195,7 +199,7 @@
 		rLen = 0;
 		rLoc = 347;
 		rType = 0;
-		vrLen = 330;
+		vrLen = 326;
 		vrLoc = 39;
 	};
 	CE170F10147FF76000CA77F8 /* PBXTextBookmark */ = {
@@ -245,7 +249,7 @@
 		rLen = 0;
 		rLoc = 334;
 		rType = 0;
-		vrLen = 376;
+		vrLen = 365;
 		vrLoc = 0;
 	};
 	CE170F15147FF76000CA77F8 /* PBXTextBookmark */ = {
@@ -285,7 +289,7 @@
 		rLen = 4;
 		rLoc = 353;
 		rType = 0;
-		vrLen = 376;
+		vrLen = 365;
 		vrLoc = 0;
 	};
 	CE170F25147FF80700CA77F8 /* PBXTextBookmark */ = {
@@ -303,7 +307,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 17";
 		rLen = 1;
-		rLoc = 1386;
+		rLoc = 296;
 		rType = 0;
 		vrLen = 366;
 		vrLoc = 0;
@@ -313,7 +317,7 @@
 		comments = "Confused by earlier errors, bailing out";
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		rLen = 1;
-		rLoc = 57;
+		rLoc = 16;
 		rType = 1;
 	};
 	CE170F2C147FF84900CA77F8 /* PBXTextBookmark */ = {
@@ -321,7 +325,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 17";
 		rLen = 0;
-		rLoc = 277;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 366;
 		vrLoc = 0;
@@ -331,7 +335,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 1386;
+		rLoc = 296;
 		rType = 0;
 		vrLen = 388;
 		vrLoc = 0;
@@ -361,7 +365,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 295;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 417;
 		vrLoc = 0;
@@ -381,7 +385,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 295;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 417;
 		vrLoc = 0;
@@ -391,7 +395,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 280;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 0;
@@ -401,7 +405,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 280;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 0;
@@ -411,7 +415,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 18";
 		rLen = 0;
-		rLoc = 329;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 484;
 		vrLoc = 0;
@@ -421,7 +425,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 24";
 		rLen = 0;
-		rLoc = 1386;
+		rLoc = 296;
 		rType = 0;
 		vrLen = 491;
 		vrLoc = 0;
@@ -431,7 +435,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 24";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 566;
 		vrLoc = 0;
@@ -441,7 +445,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 24";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 571;
 		vrLoc = 0;
@@ -451,7 +455,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 24";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 586;
 		vrLoc = 0;
@@ -461,7 +465,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 33";
 		rLen = 0;
-		rLoc = 668;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 501;
 		vrLoc = 235;
@@ -471,7 +475,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 20";
 		rLen = 0;
-		rLoc = 334;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 501;
 		vrLoc = 235;
@@ -481,7 +485,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 32";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 488;
 		vrLoc = 235;
@@ -491,7 +495,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 32";
 		rLen = 0;
-		rLoc = 673;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 555;
 		vrLoc = 173;
@@ -583,7 +587,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 32";
 		rLen = 0;
-		rLoc = 673;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 494;
 		vrLoc = 234;
@@ -593,7 +597,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 32";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 522;
 		vrLoc = 234;
@@ -603,7 +607,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 33";
 		rLen = 0;
-		rLoc = 1380;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 517;
 		vrLoc = 234;
@@ -613,7 +617,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 23";
 		rLen = 0;
-		rLoc = 407;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 547;
 		vrLoc = 234;
@@ -623,7 +627,7 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 30";
 		rLen = 0;
-		rLoc = 668;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 578;
 		vrLoc = 235;
@@ -633,9 +637,49 @@
 		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
 		name = "KeyboardCharacters.m: 56";
 		rLen = 0;
-		rLoc = 1368;
+		rLoc = 274;
 		rType = 0;
 		vrLen = 1077;
 		vrLoc = 332;
+	};
+	CEBDBB1814813E4100DB4BEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE170EC5147FEEB600CA77F8 /* KeyboardCharacters.h */;
+		name = "KeyboardCharacters.h: 19";
+		rLen = 0;
+		rLoc = 379;
+		rType = 0;
+		vrLen = 386;
+		vrLoc = 0;
+	};
+	CEBDBB1914813E4100DB4BEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
+		name = "KeyboardCharacters.m: 56";
+		rLen = 0;
+		rLoc = 274;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 332;
+	};
+	CEBDBB1A14813E4100DB4BEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
+		name = "KeyboardCharacters.m: 17";
+		rLen = 0;
+		rLoc = 277;
+		rType = 0;
+		vrLen = 910;
+		vrLoc = 137;
+	};
+	CEBDBB1D14813E8E00DB4BEB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */;
+		name = "KeyboardCharacters.m: 17";
+		rLen = 0;
+		rLoc = 296;
+		rType = 0;
+		vrLen = 1025;
+		vrLoc = 39;
 	};
 }
