@@ -82,6 +82,26 @@
 	return around;
 }
 
+-(NSIndexSet *) indexOf : (NSString*) value{
+	NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+	
+	NSUInteger row=0;
+	for (NSMutableArray *nextRow in boardArrays) {
+		NSUInteger col = [nextRow indexOfObject: value];
+		
+		if(col != NSNotFound){
+			[indexSet addIndex:row];
+			[indexSet addIndex:col];
+			
+			// TODO: break
+		}
+		
+		row++;
+	}
+	
+	return indexSet;
+}
+
 
 - (void)dealloc {
 	[boardArrays release];
