@@ -75,39 +75,84 @@
 	for (NSMutableArray *nextRow in boardArrays) {
 		for (NSString *nextCol in nextRow) {
 			NSLog(@"buildWhatsAroundCache: next string to check what's around: %@", nextCol);
-			NSMutableArray* around = [self whatsAround: nextCol];
+			NSArray* around = [self whatsAround: nextCol];
 			NSLog(@"buildWhatsAroundCache: around array: %@", around);
 			
 			[lookupCache setObject:around forKey:nextCol];
 		}
 	}
 	
+	NSLog(@"buildWhatsAroundCache: look up cache: ");
+	
 	NSLog(@"buildWhatsAroundCache: Exit");
 }
 
--(NSMutableArray*) whatsAround:(NSString*) source{
+-(NSArray*) whatsAround:(NSString*) source{
 	NSLog(@"whatsAround: Enter: %@",source);
 	NSMutableArray *around = [NSMutableArray arrayWithCapacity:9];
+	
 	NSMutableArray *sourceCords = [self indexOf: source];
 	NSLog(@"whatsAround: source cords: %@",sourceCords);
 	
+	NSNumber *sourceCorNumRow = (NSNumber *)[sourceCords objectAtIndex:0];
+	NSInteger sourceCordRow = (NSInteger)[sourceCorNumRow integerValue];
+	NSNumber* sourceCorNumCol = (NSNumber *)[sourceCords objectAtIndex:1];
+	NSInteger sourceCordCol = (NSInteger)[sourceCorNumCol integerValue];
+
+	
 	NSString *nextAround;
 	@try {	
-		//nextAround 	= [self boardsArrays[sourceCords[0] - 1][sourceCords[1]]; 
-		//NSUInteger *rowInd = (NSUInteger*)[sourceCords objectAtIndex:0 - 1];
-		//NSUInteger *colInd = (NSUInteger*)[sourceCords objectAtIndex: 1];
-		//NSMutableArray *col = [ boardArrays objectAtIndex: [rowInd intValue]];
-		//nextAround = (NSString*)[col objectAtIndex: colInd];
-		nextAround = nil;
-		
-	} @catch (NSException *exception) { 
-		nextAround = nil; 
-	}
-	if( nextAround != nil) { 
-		[around addObject:nextAround];
-	}
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow -1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
 	
-	return around;
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow +1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol - 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol + 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow - 1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol + 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow + 1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol - 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow - 1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol - 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	@try {	
+		NSMutableArray *row = (NSMutableArray*)[boardArrays objectAtIndex: sourceCordRow + 1];
+		nextAround = (NSString*)[row objectAtIndex:sourceCordCol + 1];
+	} @catch (NSException *exception) {  nextAround = nil; }
+	if( nextAround != nil) { [around addObject:nextAround]; }
+	
+	NSArray *sortedAround = [around sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+	
+	NSLog(@"whatsAround: Exit: %@",sortedAround);
+	return sortedAround;
 }
 
 -(NSMutableArray *) indexOf : (NSString*) value{

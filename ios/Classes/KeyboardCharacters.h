@@ -19,7 +19,7 @@
 -(id) init;
 -(void) buildBoards;
 -(void) buildWhatsAroundCache;
--(NSMutableArray *) whatsAround : (NSString*) source; 
+-(NSArray *) whatsAround : (NSString*) source; 
 -(NSMutableArray *) indexOf : (NSString*) value; 
 
 @end
