@@ -41,26 +41,26 @@
 	[boardArrays insertObject: row1 atIndex:0];
 	
 	NSMutableArray *row2 = [NSMutableArray arrayWithCapacity:9];
-	[row1 addObject:  @"a"];
-	[row1 addObject:  @"s"];
-	[row1 addObject:  @"d"];
-	[row1 addObject:  @"f"];
-	[row1 addObject:  @"g"];
-	[row1 addObject:  @"h"];
-	[row1 addObject:  @"j"];
-	[row1 addObject:  @"k"];
-	[row1 addObject:  @"l"];
+	[row2 addObject:  @"a"];
+	[row2 addObject:  @"s"];
+	[row2 addObject:  @"d"];
+	[row2 addObject:  @"f"];
+	[row2 addObject:  @"g"];
+	[row2 addObject:  @"h"];
+	[row2 addObject:  @"j"];
+	[row2 addObject:  @"k"];
+	[row2 addObject:  @"l"];
 	
 	[boardArrays insertObject: row2 atIndex:1];
 	
 	NSMutableArray *row3 = [NSMutableArray arrayWithCapacity:7];
-	[row1 addObject:  @"z"];
-	[row1 addObject:  @"x"];
-	[row1 addObject:  @"c"];
-	[row1 addObject:  @"v"];
-	[row1 addObject:  @"b"];
-	[row1 addObject:  @"n"];
-	[row1 addObject:  @"m"];
+	[row3 addObject:  @"z"];
+	[row3 addObject:  @"x"];
+	[row3 addObject:  @"c"];
+	[row3 addObject:  @"v"];
+	[row3 addObject:  @"b"];
+	[row3 addObject:  @"n"];
+	[row3 addObject:  @"m"];
 	
 	[boardArrays insertObject: row3 atIndex:2];
 	
@@ -114,27 +114,27 @@
 	NSLog(@"indexOf: Enter: %@",value);
 	NSMutableArray *indexSet = [NSMutableArray arrayWithCapacity:2];
 	
-	NSUInteger row=0;
+	int row=0;
 	for (NSMutableArray *nextRow in boardArrays) {
-		NSLog(@"indexOf: row: %@",row);
-		NSUInteger col = [nextRow indexOfObject: value];
-		NSLog(@"indexOf: col: %@",col);
+		//NSLog(@"indexOf: row: %@",row);
+		int col = [nextRow indexOfObject: value];
 		
 		if(col  != NSNotFound){
+			//NSLog(@"indexOf: col: %@",col);
 			NSNumber *rowNum = [NSNumber numberWithInteger: row];
 			NSNumber *colNum = [NSNumber numberWithInteger: col];
 			
 			[indexSet addObject:rowNum];
 			[indexSet addObject: colNum];
 			
-			NSLog(@"indexOf: index set: %@",indexSet);
+			//NSLog(@"indexOf: index set: %@",indexSet);
 			
 			break;
 		} else {
-			NSLog(@"indexOf: value not found in column: %@",col);
+			//NSLog(@"indexOf: value not found in row: %@",row);
 		}
 		
-		row++;
+		row = row +1;
 	}
 	
 	NSLog(@"indexOf: Exit: %@",indexSet);
