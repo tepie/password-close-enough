@@ -76,24 +76,41 @@
 
 -(NSMutableArray*) whatsAround:(NSString*) source{
 	NSMutableArray *around = [NSMutableArray arrayWithCapacity:9];
+	NSMutableArray *sourceCords = [self indexOf: source];
 	
 	NSString *nextAround;
+	@try {	
+		//nextAround 	= [self boardsArrays[sourceCords[0] - 1][sourceCords[1]]; 
+		//NSUInteger *rowInd = (NSUInteger*)[sourceCords objectAtIndex:0 - 1];
+		//NSUInteger *colInd = (NSUInteger*)[sourceCords objectAtIndex: 1];
+		//NSMutableArray *col = [ boardArrays objectAtIndex: [rowInd intValue]];
+		//nextAround = (NSString*)[col objectAtIndex: colInd];
+		
+	} @catch (NSException *exception) { 
+		nextAround = nil; 
+	}
+	if( nextAround != nil) { 
+		[around addObject:nextAround];
+	}
 	
 	return around;
 }
 
--(NSIndexSet *) indexOf : (NSString*) value{
-	NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+-(NSMutableArray *) indexOf : (NSString*) value{
+	NSMutableArray *indexSet = [NSMutableArray arrayWithCapacity:2];
 	
 	NSUInteger row=0;
 	for (NSMutableArray *nextRow in boardArrays) {
 		NSUInteger col = [nextRow indexOfObject: value];
 		
-		if(col != NSNotFound){
-			[indexSet addIndex:row];
-			[indexSet addIndex:col];
+		if(col  != NSNotFound){
+			NSNumber *rowNum = [NSNumber numberWithInteger: row];
+			NSNumber *colNum = [NSNumber numberWithInteger: col];
 			
-			// TODO: break
+			[indexSet addObject:rowNum];
+			[indexSet addObject: colNum];
+			
+			break;
 		}
 		
 		row++;

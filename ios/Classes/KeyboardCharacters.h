@@ -20,6 +20,6 @@
 -(void) buildBoards;
 -(void) buildWhatsAroundCache;
 -(NSMutableArray *) whatsAround : (NSString*) source; 
--(NSIndexSet *) indexOf : (NSString*) value; 
+-(NSMutableArray *) indexOf : (NSString*) value; 
 
 @end
