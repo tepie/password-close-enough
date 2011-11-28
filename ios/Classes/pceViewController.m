@@ -77,10 +77,19 @@
 	NSLog(@"password text field: %@",  self.passwordTextField.text);
 	[passwordStorage setObject: self.passwordTextField.text forKey: self.userTextField.text];
 	NSLog(@"map value for key: %@",  [self.passwordStorage objectForKey: self.userTextField.text] );
+	resultsLabel.text = @"Username and password have been stored.";
+	
 }
 
 - (IBAction) checkMockLoginCloseEnough{
-	KeyboardCharacters *characters = [[KeyboardCharacters alloc] init];
+	NSString* storedPasswordForUser = [self.passwordStorage objectForKey: self.userTextField.text];
+	NSLog(@"password for user: %@",  storedPasswordForUser);
+	if(storedPasswordForUser != nil){
+		KeyboardCharacters *characters = [[KeyboardCharacters alloc] init];
+	} else {
+		resultsLabel.text = @"Username not found.";
+	}
+
 }
 	
 

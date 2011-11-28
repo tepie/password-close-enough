@@ -23,6 +23,7 @@
 }
 
 - (void) buildBoards{
+	NSLog(@"buildBoards: Enter");
 	boardArrays = [NSMutableArray arrayWithCapacity:3];
 	
 	NSMutableArray *row1 = [NSMutableArray arrayWithCapacity:10];
@@ -61,22 +62,34 @@
 	[row1 addObject:  @"n"];
 	[row1 addObject:  @"m"];
 	
-	[boardArrays insertObject: row3 atIndex:3];
+	[boardArrays insertObject: row3 atIndex:2];
+	
+	NSLog(@"buildBoards: Exit");
 }
 
 -(void) buildWhatsAroundCache{
+	NSLog(@"buildWhatsAroundCache: Enter");
+
 	lookupCache = [[NSMutableDictionary alloc] init];
 	
 	for (NSMutableArray *nextRow in boardArrays) {
 		for (NSString *nextCol in nextRow) {
+			NSLog(@"buildWhatsAroundCache: next string to check what's around: %@", nextCol);
+			NSMutableArray* around = [self whatsAround: nextCol];
+			NSLog(@"buildWhatsAroundCache: around array: %@", around);
 			
+			[lookupCache setObject:around forKey:nextCol];
 		}
 	}
+	
+	NSLog(@"buildWhatsAroundCache: Exit");
 }
 
 -(NSMutableArray*) whatsAround:(NSString*) source{
+	NSLog(@"whatsAround: Enter: %@",source);
 	NSMutableArray *around = [NSMutableArray arrayWithCapacity:9];
 	NSMutableArray *sourceCords = [self indexOf: source];
+	NSLog(@"whatsAround: source cords: %@",sourceCords);
 	
 	NSString *nextAround;
 	@try {	
@@ -85,6 +98,7 @@
 		//NSUInteger *colInd = (NSUInteger*)[sourceCords objectAtIndex: 1];
 		//NSMutableArray *col = [ boardArrays objectAtIndex: [rowInd intValue]];
 		//nextAround = (NSString*)[col objectAtIndex: colInd];
+		nextAround = nil;
 		
 	} @catch (NSException *exception) { 
 		nextAround = nil; 
@@ -97,11 +111,14 @@
 }
 
 -(NSMutableArray *) indexOf : (NSString*) value{
+	NSLog(@"indexOf: Enter: %@",value);
 	NSMutableArray *indexSet = [NSMutableArray arrayWithCapacity:2];
 	
 	NSUInteger row=0;
 	for (NSMutableArray *nextRow in boardArrays) {
+		NSLog(@"indexOf: row: %@",row);
 		NSUInteger col = [nextRow indexOfObject: value];
+		NSLog(@"indexOf: col: %@",col);
 		
 		if(col  != NSNotFound){
 			NSNumber *rowNum = [NSNumber numberWithInteger: row];
@@ -110,19 +127,24 @@
 			[indexSet addObject:rowNum];
 			[indexSet addObject: colNum];
 			
+			NSLog(@"indexOf: index set: %@",indexSet);
+			
 			break;
+		} else {
+			NSLog(@"indexOf: value not found in column: %@",col);
 		}
 		
 		row++;
 	}
 	
+	NSLog(@"indexOf: Exit: %@",indexSet);
 	return indexSet;
 }
 
 
 - (void)dealloc {
 	[boardArrays release];
-    [super dealloc];
+	[super dealloc];
 }
 
 @end
