@@ -1,7 +1,7 @@
 
 #.DS_Store
-#ios/build/*
-#ios/pce.xcodeproj/*
+ios/build/*
+ios/pce.xcodeproj/*
 
 # Exclude the build directory
 build/*
@@ -22,3 +22,9 @@ build/*
 *.pbxuser
 *.xcworkspace
 xcuserdata
+
+ios/pce.xcodeproj/station3.mode1v3
+
+ios/pce.xcodeproj/station3.mode1v3
+
+ios/pce.xcodeproj/station3.pbxuser
