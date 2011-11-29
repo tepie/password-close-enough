@@ -186,6 +186,45 @@
 	return indexSet;
 }
 
+-(BOOL) isAround:(NSString *)source :(NSString *)target{
+	NSArray* around = (NSArray* )[lookupCache objectForKey: source];
+	if(around != nil){
+		return [self binarySearch : target : around];
+	} else {
+		return FALSE;
+	}
+	
+}
+
+-(BOOL) binarySearch:(NSString*) source:(NSArray*) around{
+	// https://wiki.colby.edu/display/~bkgiertl/Binary+Search+in+Objective-C
+	
+	int min = 0, max = [around count], mid;
+	
+	BOOL foundValue = false;
+	
+	NSLog(@"we are checking our array for value %i",source);
+	
+	while (min<max ) {
+		
+		mid = (min+max)/2;
+		NSLog(@"min = %i , max = %i, mid = %i",min,max,mid);
+		NSString *next =  [around objectAtIndex: mid];
+		if (next == source){
+			foundValue = true; 
+			break;
+		} else if (source > next){
+			min = mid+1;
+		} else{
+			max = mid-1;
+		}
+	}
+	
+	NSLog(@"foundValue = %i",foundValue);
+	
+	return foundValue;
+}
+
 
 - (void)dealloc {
 	[boardArrays release];

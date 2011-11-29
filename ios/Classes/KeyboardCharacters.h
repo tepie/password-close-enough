@@ -21,5 +21,7 @@
 -(void) buildWhatsAroundCache;
 -(NSArray *) whatsAround : (NSString*) source; 
 -(NSMutableArray *) indexOf : (NSString*) value; 
+-(BOOL) isAround :(NSString*)source: (NSString*)target;
+-(BOOL) binarySearch:(NSString*) source:(NSArray*) around;
 
 @end
