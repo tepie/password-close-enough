@@ -95,12 +95,12 @@
 		int cnt = 0;
 		
 		NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
+		NSCharacterSet *digitSet = [NSCharacterSet decimalDigitCharacterSet];
 		
 		while(closeEnough && cnt < [storedPasswordForUser length]){
 			NSRange range = {cnt,1};
 			NSString *left = [storedPasswordForUser substringWithRange:range];
-			//NSUInteger len = 1;
-			//NSString* leftStr = [[NSString alloc] initWithCharacters:left length:len];
+			
 			NSLog(@"left side compare: %@",  left);
 			
 			NSString *right = [closeEnoughPassword substringWithRange:range];

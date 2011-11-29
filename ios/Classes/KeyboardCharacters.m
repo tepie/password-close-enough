@@ -187,40 +187,49 @@
 }
 
 -(BOOL) isAround:(NSString *)source :(NSString *)target{
+	NSLog(@"isAround: Enter: %@, %@",source,target);
 	NSArray* around = (NSArray* )[lookupCache objectForKey: source];
-	if(around != nil){
-		return [self binarySearch : target : around];
-	} else {
-		return FALSE;
-	}
+	BOOL returnResult = FALSE;
 	
+	if(around != nil){
+		returnResult = [self binarySearch : target : around];
+	} else {
+		returnResult = FALSE;
+	}
+	NSLog(@"isAround: Exit: %i",returnResult);
+	return returnResult;
 }
 
 -(BOOL) binarySearch:(NSString*) source:(NSArray*) around{
+	NSLog(@"binarySearch: Enter: %@, %@",source,around);
 	// https://wiki.colby.edu/display/~bkgiertl/Binary+Search+in+Objective-C
 	
 	int min = 0, max = [around count], mid;
 	
 	BOOL foundValue = false;
 	
-	NSLog(@"we are checking our array for value %i",source);
+	NSLog(@"binarySearch: we are checking our array for value %@",source);
 	
 	while (min<max ) {
 		
 		mid = (min+max)/2;
-		NSLog(@"min = %i , max = %i, mid = %i",min,max,mid);
+		NSLog(@"binarySearch: min = %i , max = %i, mid = %i",min,max,mid);
 		NSString *next =  [around objectAtIndex: mid];
-		if (next == source){
+		NSLog(@"binarySearch: string at midpoint: %@",next);
+		
+		NSComparisonResult result = [source compare:next];
+		
+		if (result == NSOrderedSame){
 			foundValue = true; 
 			break;
-		} else if (source > next){
+		} else if (result == NSOrderedDescending){
 			min = mid+1;
 		} else{
 			max = mid-1;
 		}
 	}
 	
-	NSLog(@"foundValue = %i",foundValue);
+	NSLog(@"binarySearch Exit: %i",foundValue);
 	
 	return foundValue;
 }
