@@ -16,6 +16,7 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* pceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* pceViewController.m */; };
 		CE170EC7147FEEB600CA77F8 /* KeyboardCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */; };
+		CE2A16D414854FCD00D30736 /* KeyboardDigits.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2A16D314854FCD00D30736 /* KeyboardDigits.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		8D1107310486CEB800E47090 /* pce-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "pce-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CE170EC5147FEEB600CA77F8 /* KeyboardCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardCharacters.h; sourceTree = "<group>"; };
 		CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardCharacters.m; sourceTree = "<group>"; };
+		CE2A16D214854FCD00D30736 /* KeyboardDigits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardDigits.h; sourceTree = "<group>"; };
+		CE2A16D314854FCD00D30736 /* KeyboardDigits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardDigits.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,8 @@
 				28D7ACF70DDB3853001CB0EB /* pceViewController.m */,
 				CE170EC5147FEEB600CA77F8 /* KeyboardCharacters.h */,
 				CE170EC6147FEEB600CA77F8 /* KeyboardCharacters.m */,
+				CE2A16D214854FCD00D30736 /* KeyboardDigits.h */,
+				CE2A16D314854FCD00D30736 /* KeyboardDigits.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				1D3623260D0F684500981E51 /* pceAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* pceViewController.m in Sources */,
 				CE170EC7147FEEB600CA77F8 /* KeyboardCharacters.m in Sources */,
+				CE2A16D414854FCD00D30736 /* KeyboardDigits.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

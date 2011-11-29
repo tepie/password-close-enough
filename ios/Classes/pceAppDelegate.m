@@ -3,7 +3,7 @@
 //  pce
 //
 //  Created by terrence pietrondi on 11/24/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 pietrondi. All rights reserved.
 //
 
 #import "pceAppDelegate.h"

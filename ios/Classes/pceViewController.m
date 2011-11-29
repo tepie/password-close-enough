@@ -3,11 +3,12 @@
 //  pce
 //
 //  Created by terrence pietrondi on 11/24/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 pietrondi. All rights reserved.
 //
 
 #import "pceViewController.h"
 #import "KeyboardCharacters.h"
+#import "KeyboardDigits.h"
 
 @implementation pceViewController
 @synthesize userTextField;
@@ -75,6 +76,10 @@
 - (IBAction) storeMockLogin{
 	NSLog(@"user text field: %@",  self.userTextField.text);
 	NSLog(@"password text field: %@",  self.passwordTextField.text);
+	
+	[userTextField resignFirstResponder];
+	[passwordTextField resignFirstResponder];
+	
 	[passwordStorage setObject: self.passwordTextField.text forKey: self.userTextField.text];
 	NSLog(@"map value for key: %@",  [self.passwordStorage objectForKey: self.userTextField.text] );
 	resultsLabel.text = @"Username and password have been stored.";
@@ -82,14 +87,16 @@
 }
 
 - (IBAction) checkMockLoginCloseEnough{
+	[userTextField resignFirstResponder];
+	[passwordTextField resignFirstResponder];
+	
 	NSString* storedPasswordForUser = [self.passwordStorage objectForKey: self.userTextField.text];
 	NSLog(@"password for user: %@",  storedPasswordForUser);
 	if(storedPasswordForUser != nil){
 		NSString* closeEnoughPassword = self.passwordTextField.text;
 		
-		//NSArray *cepArray = [closeEnoughPassword componentsSeparatedByString:@""];
-		//NSArray *storedArray = [storedPasswordForUser componentsSeparatedByString:@""];
 		KeyboardCharacters *characters = [[KeyboardCharacters alloc] init];
+		KeyboardDigits *digits = [[KeyboardDigits alloc] init];
 		
 		BOOL closeEnough = true;
 		int cnt = 0;
@@ -110,9 +117,14 @@
 			
 				BOOL isNotLetterLeft = [[left stringByTrimmingCharactersInSet:letterSet] isEqualToString:@""];
 				BOOL isNotLetterRight = [[right stringByTrimmingCharactersInSet:letterSet] isEqualToString:@""];
+				
+				BOOL isNotDigitLeft = [[left stringByTrimmingCharactersInSet:digitSet] isEqualToString:@""];
+				BOOL isNotDigitRight = [[right stringByTrimmingCharactersInSet:digitSet] isEqualToString:@""];
 			
 				if(isNotLetterLeft && isNotLetterRight){
 					closeEnough = [characters isAround: left: right];
+				} else if(isNotDigitLeft && isNotDigitRight){
+					closeEnough = [digits isAround: left: right];
 				}
 			}
 			cnt++;
