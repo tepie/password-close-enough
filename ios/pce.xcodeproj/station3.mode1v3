@@ -272,7 +272,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>5</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -315,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>KeyboardCharacters.m</string>
+								<string>pceViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,20 +323,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>KeyboardCharacters.m</string>
+										<string>pceViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CEA2D5D914846526009BDBC6</string>
+										<string>CEA2D64E1484754B009BDBC6</string>
 										<key>history</key>
 										<array>
 											<string>CE170F10147FF76000CA77F8</string>
 											<string>CE170F11147FF76000CA77F8</string>
-											<string>CEA2D4F21484183A009BDBC6</string>
 											<string>CEA2D4F31484183A009BDBC6</string>
-											<string>CEA2D4F9148418FB009BDBC6</string>
-											<string>CEA2D5CC1484643C009BDBC6</string>
-											<string>CEA2D5CD1484643C009BDBC6</string>
+											<string>CEA2D61D14847110009BDBC6</string>
+											<string>CEA2D61E14847110009BDBC6</string>
+											<string>CEA2D61F14847110009BDBC6</string>
+											<string>CEA2D63514847231009BDBC6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -534,6 +534,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>CEA2D64F1484754B009BDBC6</string>
 		<string>CEA2D53414842118009BDBC6</string>
 		<string>CEA2D50E14841E42009BDBC6</string>
 		<string>CEA2D50614841D3B009BDBC6</string>
@@ -564,7 +565,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>KeyboardCharacters.m</string>
+								<string>pceViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

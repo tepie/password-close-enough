@@ -85,7 +85,45 @@
 	NSString* storedPasswordForUser = [self.passwordStorage objectForKey: self.userTextField.text];
 	NSLog(@"password for user: %@",  storedPasswordForUser);
 	if(storedPasswordForUser != nil){
+		NSString* closeEnoughPassword = self.passwordTextField.text;
+		
+		//NSArray *cepArray = [closeEnoughPassword componentsSeparatedByString:@""];
+		//NSArray *storedArray = [storedPasswordForUser componentsSeparatedByString:@""];
 		KeyboardCharacters *characters = [[KeyboardCharacters alloc] init];
+		
+		BOOL closeEnough = true;
+		int cnt = 0;
+		
+		NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
+		
+		while(closeEnough && cnt < [storedPasswordForUser length]){
+			NSRange range = {cnt,1};
+			NSString *left = [storedPasswordForUser substringWithRange:range];
+			//NSUInteger len = 1;
+			//NSString* leftStr = [[NSString alloc] initWithCharacters:left length:len];
+			NSLog(@"left side compare: %@",  left);
+			
+			NSString *right = [closeEnoughPassword substringWithRange:range];
+			NSLog(@"right side compare: %@",  right);
+			
+			if([left compare: right] != 0){
+			
+				BOOL isNotLetterLeft = [[left stringByTrimmingCharactersInSet:letterSet] isEqualToString:@""];
+				BOOL isNotLetterRight = [[right stringByTrimmingCharactersInSet:letterSet] isEqualToString:@""];
+			
+				if(isNotLetterLeft && isNotLetterRight){
+					closeEnough = [characters isAround: left: right];
+				}
+			}
+			cnt++;
+		}
+		
+		if(closeEnough){
+			resultsLabel.text = @"Password IS close enough!";
+		} else {
+			resultsLabel.text = @"Password IS NOT close enough!";
+		}
+		
 	} else {
 		resultsLabel.text = @"Username not found.";
 	}
